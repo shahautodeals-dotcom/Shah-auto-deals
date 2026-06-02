@@ -1,0 +1,16 @@
+workflows:
+  android-workflow:
+    name: Android Workflow
+    max_build_duration: 60
+    scripts:
+      - name: Unzip source
+        script: |
+          unzip shah-auto-deals*.zip -d project
+          cd project
+      - name: Build APK
+        script: |
+          cd project
+          chmod +x gradlew
+          ./gradlew assembleDebug
+    artifacts:
+      - project/app/build/outputs/**/*.apk
