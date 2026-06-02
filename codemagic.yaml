@@ -1,13 +1,13 @@
 workflows:
   android-workflow:
     name: Android Workflow
-    max_build_duration: 60
+    max_build_duration: 120
     scripts:
       - name: Build APK
         script: |
           unzip shah-auto-deals-fixed.zip -d project
           cd project/shah-auto-deals
           chmod +x gradlew
-          ./gradlew assembleDebug
+          GRADLE_OPTS="-Xmx3g -XX:MaxMetaspaceSize=512m" ./gradlew assembleDebug --no-daemon --stacktrace
     artifacts:
       - project/shah-auto-deals/app/build/outputs/**/*.apk
