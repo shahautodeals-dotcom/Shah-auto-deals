@@ -5,8 +5,7 @@ workflows:
     scripts:
       - name: Unzip source
         script: |
-          unzip shah-auto-deals*.zip -d project
-          cd project
+          unzip "shah-auto-deals (1).zip" -d project
       - name: Build APK
         script: |
           cd project
